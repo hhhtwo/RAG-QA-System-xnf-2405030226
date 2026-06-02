@@ -1,1 +1,54 @@
+Transformer Architecture Explained
+
+Chapter 1: Introduction to Transformer
+
+Transformer is a deep learning architecture based on self-attention mechanism, proposed by Google in the 2017 paper "Attention is All You Need". It has completely changed the field of natural language processing.
+
+Chapter 2: Transformer Structure
+
+The Transformer consists of two main parts: Encoder and Decoder.
+
+Encoder structure:
+- Input Embedding layer
+- Multi-Head Attention mechanism
+- Feed-Forward Network
+- Layer Normalization
+- Residual Connection
+
+Decoder structure:
+- Output Embedding layer
+- Masked Multi-Head Attention
+- Encoder-Decoder Attention
+- Feed-Forward Network
+- Layer Normalization and Residual Connection
+
+Chapter 3: Self-Attention Mechanism
+
+The self-attention mechanism allows the model to focus on all positions in the input sequence when processing each position. The calculation process includes:
+1. Computing Query, Key, Value matrices
+2. Computing attention scores
+3. Normalization using Softmax
+4. Weighted summation to get output
+
+Chapter 4: Multi-Head Attention
+
+Multi-head attention uses multiple parallel attention heads to capture different types of relationships. Each head learns different attention patterns.
+
+Chapter 5: Advantages of Transformer
+
+Compared to traditional RNN and CNN, Transformer has the following advantages:
+- Strong parallel computing capability
+- Good ability to model long-distance dependencies
+- Strong model expressiveness
+
+Chapter 6: Applications of Transformer
+
+The Transformer architecture is widely used in:
+- BERT: Bidirectional Transformer for pre-training and fine-tuning
+- GPT: Generative Pre-trained Transformer
+- T5: Unified framework for multiple NLP tasks
+- Vision Transformer: Applying Transformer to computer vision
+
+Reference papers:
+- Vaswani et al. (2017). Attention is All You Need.
 - Devlin et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.

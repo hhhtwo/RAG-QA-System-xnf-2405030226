@@ -73,21 +73,19 @@ class KnowledgeBase:
 
 def main():
     kb = KnowledgeBase()
-    
     documents = kb.load_documents("./data")
-    
     kb.build_vector_db(documents)
     
     print("\nTesting search function...")
-    query = "浠€涔堟槸Transformer?"
+    query = "What is Transformer?"
     results = kb.search(query)
     
-    print(f"\n鏌ヨ: {query}")
-    print(f"鎵惧埌 {len(results)} 涓浉鍏虫枃鏈潡:")
+    print(f"\nQuery: {query}")
+    print(f"Found {len(results)} relevant chunks:")
     for i, result in enumerate(results, 1):
-        print(f"\n--- 缁撴灉 {i} ---")
-        print(f"鏉ユ簮: {result.metadata.get('source', 'Unknown')}")
-        print(f"鍐呭:\n{result.page_content[:200]}...")
+        print(f"\n--- Result {i} ---")
+        print(f"Source: {result.metadata.get('source', 'Unknown')}")
+        print(f"Content:\n{result.page_content[:200]}...")
 
 if __name__ == "__main__":
     main()

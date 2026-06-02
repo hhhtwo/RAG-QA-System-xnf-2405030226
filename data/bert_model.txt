@@ -1,0 +1,40 @@
+BERT妯″瀷璇﹁В
+
+绗竴绔狅細BERT绠€浠?
+BERT锛圔idirectional Encoder Representations from Transformers锛夋槸鐢盙oogle鍦?018骞存彁鍑虹殑棰勮缁冭瑷€妯″瀷銆傚畠鍩轰簬Transformer缂栫爜鍣紝閲囩敤鍙屽悜涓婁笅鏂囩悊瑙ｃ€?
+绗簩绔狅細BERT鏋舵瀯
+
+BERT鐨勬牳蹇冪粨鏋勬槸澶氬眰Transformer缂栫爜鍣ㄣ€備富瑕佺壒鐐瑰寘鎷細
+- 鍙屽悜Transformer缂栫爜鍣?- 澶氬眰鍫嗗彔缁撴瀯
+- 澶氬ご鑷敞鎰忓姏鏈哄埗
+
+绗笁绔狅細BERT棰勮缁冧换鍔?
+BERT閫氳繃涓や釜棰勮缁冧换鍔″涔犻€氱敤璇█琛ㄧず锛?
+1. 鎺╃爜璇█妯″瀷锛圡asked Language Modeling, MLM锛夛細
+   - 闅忔満鎺╃洊15%鐨勮緭鍏oken
+   - 妯″瀷棰勬祴琚帺鐩栫殑token
+   - 杩欎娇妯″瀷瀛︿範鍙屽悜涓婁笅鏂?
+2. 涓嬩竴鍙ラ娴嬶紙Next Sentence Prediction, NSP锛夛細
+   - 棰勬祴涓や釜鍙ュ瓙鏄惁杩炵画
+   - 姝ｆ牱鏈細鐪熷疄杩炵画鐨勫彞瀛愬
+   - 璐熸牱鏈細闅忔満閰嶅鐨勫彞瀛愬
+
+绗洓绔狅細BERT鍙樹綋
+
+BERT鏈夊涓彉浣撶増鏈細
+- BERT-Base锛?2灞俆ransformer锛?68缁撮殣钘忓眰锛?2涓敞鎰忓姏澶?- BERT-Large锛?4灞俆ransformer锛?024缁撮殣钘忓眰锛?6涓敞鎰忓姏澶?- BERT-Small锛氳緝灏忕殑妯″瀷锛岄€傚悎璧勬簮鍙楅檺鐜
+
+绗簲绔狅細BERT寰皟
+
+BERT閲囩敤涓ら樁娈佃缁冿細
+1. 棰勮缁冮樁娈碉細鍦ㄥぇ瑙勬ā璇枡涓婂涔犻€氱敤琛ㄧず
+2. 寰皟闃舵锛氬湪鐗瑰畾浠诲姟涓婅繘琛屽井璋?
+寰皟鏂规硶鍖呮嫭锛?- 娣诲姞浠诲姟鐗瑰畾鐨勫垎绫诲眰
+- 鍐荤粨閮ㄥ垎棰勮缁冨弬鏁?- 浣跨敤杈冨皬鐨勫涔犵巼
+
+绗叚绔狅細BERT鐨勫簲鐢?
+BERT鍦ㄥ涓狽LP浠诲姟涓婂彇寰椾簡绐佺牬锛?- 闂瓟绯荤粺锛圦A锛?- 鎯呮劅鍒嗘瀽
+- 鍛藉悕瀹炰綋璇嗗埆锛圢ER锛?- 鏂囨湰鍒嗙被
+- 璇箟鐩镐技搴﹁绠?
+鍙傝€冭鏂囷細
+- Devlin et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.

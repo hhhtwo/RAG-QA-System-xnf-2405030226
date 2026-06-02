@@ -20,23 +20,26 @@ class RAGQASystem:
         self.qa_chain = None
         
         self.system_prompt = """
-鍩轰簬鎻愪緵鐨勫弬鑰冩枃妗ｅ洖绛旈棶棰樸€?濡傛灉鏂囨。涓病鏈夌浉鍏充俊鎭紝璇锋槑纭"鏂囨。涓湭鎵惧埌鐩稿叧绛旀"銆?璇风洿鎺ョ粰鍑虹瓟妗堬紝涓嶉渶瑕侀澶栬鏄庛€?        """.strip()
+Answer the question based on the provided reference documents.
+If no relevant information is found in the documents, clearly say "No relevant answer found in the documents".
+Please provide the answer directly without additional explanation.
+        """.strip()
 
     def load_knowledge_base(self, data_dir="./data"):
         try:
             documents = self.kb.load_documents(data_dir)
             if documents:
                 self.kb.build_vector_db(documents)
-                print(f"鐭ヨ瘑搴撳凡鍔犺浇锛屽叡 {len(documents)} 涓枃妗?)
+                print(f"Knowledge base loaded with {len(documents)} documents")
             else:
-                print("鏈壘鍒版枃妗ｏ紝灏濊瘯浠庡凡鏈夊悜閲忓簱鍔犺浇...")
+                print("No documents found, attempting to load from existing vector database...")
                 self.kb.vector_store = Chroma(
                     persist_directory=self.kb.persist_directory,
                     embedding_function=self.embeddings
                 )
         except Exception as e:
-            print(f"鍔犺浇鐭ヨ瘑搴撳け璐? {e}")
-            print("灏濊瘯浠庡凡鏈夊悜閲忓簱鍔犺浇...")
+            print(f"Failed to load knowledge base: {e}")
+            print("Attempting to load from existing vector database...")
             self.kb.vector_store = Chroma(
                 persist_directory=self.kb.persist_directory,
                 embedding_function=self.embeddings
@@ -46,7 +49,7 @@ class RAGQASystem:
         retriever = self.kb.get_retriever()
         
         prompt = PromptTemplate(
-            template=self.system_prompt + "\n\n涓婁笅鏂?\n{context}\n\n闂:\n{question}",
+            template=self.system_prompt + "\n\nContext:\n{context}\n\nQuestion:\n{question}",
             input_variables=["context", "question"]
         )
         
@@ -69,33 +72,33 @@ class RAGQASystem:
         self.memory.clear()
 
 def test_rag_system():
-    print("=== RAG闂瓟绯荤粺娴嬭瘯 ===")
+    print("=== RAG Question Answering System Test ===")
     
     rag = RAGQASystem()
     rag.load_knowledge_base()
     rag.build_qa_chain()
     
     test_questions = [
-        ("浠€涔堟槸鑷劧璇█澶勭悊?", "鐩稿叧闂"),
-        ("Transformer鏋舵瀯鐢卞摢涓ら儴鍒嗙粍鎴?", "鐩稿叧闂"),
-        ("BERT鐨勯璁粌浠诲姟鏈夊摢浜?", "鐩稿叧闂"),
-        ("鏂囨湰鍒嗙被鐨勫父鐢ㄧ畻娉曟湁鍝簺?", "鐩稿叧闂"),
-        ("鎯呮劅鍒嗘瀽鏈夊摢浜涘簲鐢ㄥ満鏅?", "鐩稿叧闂"),
-        ("浠€涔堟槸鏈哄櫒瀛︿範?", "鏃犲叧闂"),
-        ("浠婂ぉ澶╂皵鎬庝箞鏍?", "鏃犲叧闂")
+        ("What is Natural Language Processing?", "Relevant Question"),
+        ("What are the two main parts of the Transformer architecture?", "Relevant Question"),
+        ("What are the pre-training tasks of BERT?", "Relevant Question"),
+        ("What are common text classification algorithms?", "Relevant Question"),
+        ("What are the application scenarios of sentiment analysis?", "Relevant Question"),
+        ("What is machine learning?", "Irrelevant Question"),
+        ("What is the weather today?", "Irrelevant Question")
     ]
     
-    print("\n--- 娴嬭瘯寮€濮?---")
+    print("\n--- Starting Tests ---")
     for question, category in test_questions:
         print(f"\n銆恵category}銆?)
-        print(f"闂: {question}")
+        print(f"Question: {question}")
         try:
             answer = rag.ask(question)
-            print(f"鍥炵瓟: {answer}")
+            print(f"Answer: {answer}")
         except Exception as e:
-            print(f"鍥炵瓟澶辫触: {e}")
+            print(f"Answer Failed: {e}")
     
-    print("\n--- 娴嬭瘯瀹屾垚 ---")
+    print("\n--- Tests Completed ---")
 
 if __name__ == "__main__":
     test_rag_system()

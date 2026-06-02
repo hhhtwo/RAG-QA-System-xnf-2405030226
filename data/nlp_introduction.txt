@@ -1,1 +1,41 @@
+Introduction to Natural Language Processing
+
+Chapter 1: Overview of NLP
+
+Natural Language Processing (NLP) is a subfield of artificial intelligence that focuses on the interaction between computers and human language. The goal of NLP is to enable computers to understand, interpret, and generate human language.
+
+Chapter 2: Main Tasks in NLP
+
+NLP covers several core tasks, including:
+1. Tokenization: Splitting text into words or subword units
+2. Part-of-Speech Tagging: Labeling each word with its part of speech
+3. Named Entity Recognition (NER): Identifying entities in text
+4. Parsing: Analyzing the grammatical structure of sentences
+5. Sentiment Analysis: Determining the sentiment of text
+6. Machine Translation: Translating text from one language to another
+7. Text Generation: Automatically generating text content
+
+Chapter 3: Applications of NLP
+
+NLP technology is widely used in various domains:
+- Intelligent customer service systems
+- Machine translation services
+- Text summarization
+- Voice assistants (e.g., Siri, Alexa)
+- Search engine optimization
+- Social media analysis
+
+Chapter 4: History of NLP Development
+
+NLP has gone through several stages:
+1. Rule-based stage: Based on manually written grammatical rules
+2. Statistical machine learning stage: Using statistical models and machine learning algorithms
+3. Deep learning stage: End-to-end learning based on neural networks
+
+Chapter 5: Modern NLP Technology
+
+Modern NLP techniques are mainly based on deep learning, especially the Transformer architecture. The emergence of pre-trained models like BERT and GPT has greatly advanced the field of NLP.
+
+References:
+- Jurafsky, D., & Martin, J. H. (2020). Speech and Language Processing.
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval.

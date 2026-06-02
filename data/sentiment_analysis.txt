@@ -1,58 +1,58 @@
-Sentiment Analysis Techniques
-
-Chapter 1: Overview of Sentiment Analysis
-
-Sentiment Analysis is an important application of natural language processing that aims to identify and extract emotional information from text. Sentiment analysis can determine whether the text expresses positive, negative, or neutral sentiment.
-
-Chapter 2: Types of Sentiment Analysis
-
-Sentiment analysis is mainly divided into the following types:
-1. Document-level Sentiment Analysis: Determine sentiment of entire documents
-2. Sentence-level Sentiment Analysis: Determine sentiment of individual sentences
-3. Aspect-level Sentiment Analysis: Sentiment analysis for specific entities or aspects
-4. Sentiment Intensity Analysis: Quantify the intensity of sentiment
-
-Chapter 3: Sentiment Analysis Methods
-
-There are three main types of sentiment analysis methods:
-1. Dictionary-based methods: Use sentiment dictionaries for sentiment scoring
-2. Machine learning methods: Train classifiers for sentiment prediction
-3. Deep learning methods: Use neural network models
-
-Chapter 4: Sentiment Dictionaries
-
-Sentiment dictionaries are important resources for sentiment analysis:
-- Positive sentiment word dictionary
-- Negative sentiment word dictionary
-- Degree adverb dictionary
-- Negation word dictionary
-
-Common dictionaries include:
-- AFINN
-- VADER
-- SentiWordNet
-
-Chapter 5: Machine Learning Methods
-
-Machine learning method workflow:
-1. Data collection and annotation
-2. Feature extraction (TF-IDF, bag of words, etc.)
-3. Select classification algorithm (SVM, Naive Bayes, Logistic Regression, etc.)
-4. Model training and evaluation
-
-Chapter 6: Deep Learning Methods
-
-Deep learning methods:
-1. CNN: Convolutional neural networks extract local features
-2. RNN/LSTM: Process sequential information
-3. Transformer/BERT: Capture contextual dependencies
-4. Pre-trained model fine-tuning: Utilize large-scale pre-trained models
-
-Chapter 7: Application Scenarios
-
-Sentiment analysis application scenarios:
-- Social media monitoring
-- Product review analysis
-- Customer feedback analysis
-- Public opinion monitoring
+Sentiment Analysis Techniques
+
+Chapter 1: Overview of Sentiment Analysis
+
+Sentiment Analysis is an important application of natural language processing that aims to identify and extract emotional information from text. Sentiment analysis can determine whether the text expresses positive, negative, or neutral sentiment.
+
+Chapter 2: Types of Sentiment Analysis
+
+Sentiment analysis is mainly divided into the following types:
+1. Document-level Sentiment Analysis: Determine sentiment of entire documents
+2. Sentence-level Sentiment Analysis: Determine sentiment of individual sentences
+3. Aspect-level Sentiment Analysis: Sentiment analysis for specific entities or aspects
+4. Sentiment Intensity Analysis: Quantify the intensity of sentiment
+
+Chapter 3: Sentiment Analysis Methods
+
+There are three main types of sentiment analysis methods:
+1. Dictionary-based methods: Use sentiment dictionaries for sentiment scoring
+2. Machine learning methods: Train classifiers for sentiment prediction
+3. Deep learning methods: Use neural network models
+
+Chapter 4: Sentiment Dictionaries
+
+Sentiment dictionaries are important resources for sentiment analysis:
+- Positive sentiment word dictionary
+- Negative sentiment word dictionary
+- Degree adverb dictionary
+- Negation word dictionary
+
+Common dictionaries include:
+- AFINN
+- VADER
+- SentiWordNet
+
+Chapter 5: Machine Learning Methods
+
+Machine learning method workflow:
+1. Data collection and annotation
+2. Feature extraction (TF-IDF, bag of words, etc.)
+3. Select classification algorithm (SVM, Naive Bayes, Logistic Regression, etc.)
+4. Model training and evaluation
+
+Chapter 6: Deep Learning Methods
+
+Deep learning methods:
+1. CNN: Convolutional neural networks extract local features
+2. RNN/LSTM: Process sequential information
+3. Transformer/BERT: Capture contextual dependencies
+4. Pre-trained model fine-tuning: Utilize large-scale pre-trained models
+
+Chapter 7: Application Scenarios
+
+Sentiment analysis application scenarios:
+- Social media monitoring
+- Product review analysis
+- Customer feedback analysis
+- Public opinion monitoring
 - Market research

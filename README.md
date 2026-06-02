@@ -8,13 +8,13 @@ This project implements a complete RAG-based intelligent question answering syst
 
 ## Features
 
-- 馃摎 Supports PDF, DOCX, and TXT document upload and batch processing
-- 馃攳 Intelligent document retrieval, returning the most relevant text chunks
-- 馃 Local large language models based on Ollama (deepseek-r1:7b / qwen2:7b)
-- 馃挰 Interactive web Q&A interface with multi-turn conversation support
-- 鈿?Real-time answer generation with session memory
-- 馃搳 Chroma-based vector database
-- 馃摝 Supports packaging as standalone EXE executable
+- 棣冩憥 Supports PDF, DOCX, and TXT document upload and batch processing
+- 棣冩敵 Intelligent document retrieval, returning the most relevant text chunks
+- 棣冾樆 Local large language models based on Ollama (deepseek-r1:7b / qwen2:7b)
+- 棣冩尠 Interactive web Q&A interface with multi-turn conversation support
+- 閳?Real-time answer generation with session memory
+- 棣冩惓 Chroma-based vector database
+- 棣冩憹 Supports packaging as standalone EXE executable
 
 ## Technology Stack
 
@@ -101,21 +101,21 @@ print(answer)
 
 ```
 .
-鈹溾攢鈹€ app.py                # Streamlit web application entry
-鈹溾攢鈹€ knowledge_base.py     # Knowledge base construction and retrieval module
-鈹溾攢鈹€ rag_qa_chain.py       # RAG QA chain (command line version)
-鈹溾攢鈹€ test_ollama.py        # Ollama API test script
-鈹溾攢鈹€ rag_qa.spec           # PyInstaller packaging configuration
-鈹溾攢鈹€ requirements.txt      # Dependency list
-鈹溾攢鈹€ .gitignore            # Git ignore configuration
-鈹溾攢鈹€ data/                 # Sample documents directory
-鈹?  鈹溾攢鈹€ nlp_introduction.txt       # NLP introduction
-鈹?  鈹溾攢鈹€ transformer_architecture.txt # Transformer architecture
-鈹?  鈹溾攢鈹€ bert_model.txt             # BERT model explanation
-鈹?  鈹溾攢鈹€ text_classification.txt    # Text classification techniques
-鈹?  鈹斺攢鈹€ sentiment_analysis.txt     # Sentiment analysis techniques
-鈹溾攢鈹€ chroma_db/            # Chroma vector database storage
-鈹斺攢鈹€ README.md             # Project documentation
+閳规壕鏀㈤埞鈧?app.py                # Streamlit web application entry
+閳规壕鏀㈤埞鈧?knowledge_base.py     # Knowledge base construction and retrieval module
+閳规壕鏀㈤埞鈧?rag_qa_chain.py       # RAG QA chain (command line version)
+閳规壕鏀㈤埞鈧?test_ollama.py        # Ollama API test script
+閳规壕鏀㈤埞鈧?rag_qa.spec           # PyInstaller packaging configuration
+閳规壕鏀㈤埞鈧?requirements.txt      # Dependency list
+閳规壕鏀㈤埞鈧?.gitignore            # Git ignore configuration
+閳规壕鏀㈤埞鈧?data/                 # Sample documents directory
+閳?  閳规壕鏀㈤埞鈧?nlp_introduction.txt       # NLP introduction
+閳?  閳规壕鏀㈤埞鈧?transformer_architecture.txt # Transformer architecture
+閳?  閳规壕鏀㈤埞鈧?bert_model.txt             # BERT model explanation
+閳?  閳规壕鏀㈤埞鈧?text_classification.txt    # Text classification techniques
+閳?  閳规柡鏀㈤埞鈧?sentiment_analysis.txt     # Sentiment analysis techniques
+閳规壕鏀㈤埞鈧?chroma_db/            # Chroma vector database storage
+閳规柡鏀㈤埞鈧?README.md             # Project documentation
 ```
 
 ## Key Technical Points

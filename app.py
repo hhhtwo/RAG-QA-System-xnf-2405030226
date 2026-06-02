@@ -12,7 +12,7 @@ import os
 
 st.set_page_config(page_title="RAG QA System", page_icon="馃", layout="wide")
 
-st.title("馃摎 RAG 鏅鸿兘闂瓟绯荤粺")
+st.title("馃摎 RAG Question Answering System")
 
 if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
@@ -31,26 +31,26 @@ if 'qa_chain' not in st.session_state:
     st.session_state.qa_chain = None
 
 with st.sidebar:
-    st.header("鈿欙笍 璁剧疆")
-    model_name = st.selectbox("閫夋嫨璇█妯″瀷", ["deepseek-r1:7b", "qwen2:7b"])
-    embedding_model = st.selectbox("閫夋嫨宓屽叆妯″瀷", ["nomic-embed-text", "all-minilm"])
+    st.header("鈿欙笍 Settings")
+    model_name = st.selectbox("Select Language Model", ["deepseek-r1:7b", "qwen2:7b"])
+    embedding_model = st.selectbox("Select Embedding Model", ["nomic-embed-text", "all-minilm"])
     
     st.divider()
     
-    st.subheader("馃搳 鐭ヨ瘑搴撶姸鎬?)
-    st.info(f"宸插姞杞芥枃妗? {st.session_state.doc_count} 涓?)
-    st.info(f"鏂囨湰鍧楁暟閲? {st.session_state.chunk_count} 涓?)
+    st.subheader("馃搳 Knowledge Base Status")
+    st.info(f"Documents Loaded: {st.session_state.doc_count}")
+    st.info(f"Text Chunks: {st.session_state.chunk_count}")
     
-    if st.button("馃Ч 娓呴櫎瀵硅瘽鍘嗗彶"):
+    if st.button("馃Ч Clear Chat History"):
         st.session_state.chat_history = []
         st.session_state.memory = ConversationBufferMemory(
             memory_key="chat_history",
             return_messages=True
         )
         st.session_state.qa_chain = None
-        st.success("瀵硅瘽鍘嗗彶宸叉竻闄?)
+        st.success("Chat history cleared")
     
-    if st.button("馃棏锔?娓呯┖鐭ヨ瘑搴?):
+    if st.button("馃棏锔?Clear Knowledge Base"):
         st.session_state.vector_store = None
         st.session_state.doc_count = 0
         st.session_state.chunk_count = 0
@@ -63,18 +63,18 @@ with st.sidebar:
         if os.path.exists("./chroma_db"):
             import shutil
             shutil.rmtree("./chroma_db")
-        st.success("鐭ヨ瘑搴撳凡娓呯┖")
+        st.success("Knowledge base cleared")
 
 uploaded_files = st.file_uploader(
-    "馃搧 涓婁紶鏂囨。",
+    "馃搧 Upload Documents",
     type=["pdf", "docx", "txt"],
     accept_multiple_files=True,
-    help="鏀寔 PDF銆丏OCX銆乀XT 鏍煎紡鐨勬枃妗?
+    help="Supports PDF, DOCX, and TXT formats"
 )
 
 if uploaded_files:
-    if st.button("馃殌 鏋勫缓鐭ヨ瘑搴?, type="primary"):
-        with st.spinner("姝ｅ湪澶勭悊鏂囨。..."):
+    if st.button("馃殌 Build Knowledge Base", type="primary"):
+        with st.spinner("Processing documents..."):
             docs = []
             for file in uploaded_files:
                 with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(file.name)[1]) as tmp:
@@ -90,7 +90,7 @@ if uploaded_files:
                         loader = TextLoader(tmp_path, encoding='utf-8')
                     
                     docs.extend(loader.load())
-                    st.success(f"鉁?宸插姞杞? {file.name}")
+                    st.success(f"鉁?Loaded: {file.name}")
                 finally:
                     os.unlink(tmp_path)
             
@@ -116,11 +116,11 @@ if uploaded_files:
                 st.session_state.vector_store.add_documents(split_docs)
             
             st.session_state.vector_store.persist()
-            st.success(f"馃帀 鐭ヨ瘑搴撴瀯寤哄畬鎴愶紒鍏?{len(split_docs)} 涓枃鏈潡")
+            st.success(f"馃帀 Knowledge Base Built! {len(split_docs)} chunks created")
 
 st.divider()
 
-st.subheader("馃挰 闂瓟浜や簰")
+st.subheader("馃挰 Question & Answer")
 
 for msg in st.session_state.chat_history:
     with st.chat_message(msg["role"]):
@@ -136,10 +136,13 @@ def build_qa_chain():
     retriever = st.session_state.vector_store.as_retriever()
     
     system_prompt = """
-鍩轰簬鎻愪緵鐨勫弬鑰冩枃妗ｅ洖绛旈棶棰樸€?濡傛灉鏂囨。涓病鏈夌浉鍏充俊鎭紝璇锋槑纭"鏂囨。涓湭鎵惧埌鐩稿叧绛旀"銆?璇风洿鎺ョ粰鍑虹瓟妗堬紝涓嶉渶瑕侀澶栬鏄庛€?    """.strip()
+Answer the question based on the provided reference documents.
+If no relevant information is found in the documents, clearly say "No relevant answer found in the documents".
+Please provide the answer directly without additional explanation.
+    """.strip()
     
     prompt = PromptTemplate(
-        template=system_prompt + "\n\n涓婁笅鏂?\n{context}\n\n闂:\n{question}",
+        template=system_prompt + "\n\nContext:\n{context}\n\nQuestion:\n{question}",
         input_variables=["context", "question"]
     )
     
@@ -153,16 +156,16 @@ def build_qa_chain():
     
     return qa_chain
 
-if query := st.chat_input("璇疯緭鍏ユ偍鐨勯棶棰?.."):
+if query := st.chat_input("Enter your question..."):
     if st.session_state.vector_store is None:
-        st.warning("鈿狅笍 璇峰厛涓婁紶鏂囨。骞舵瀯寤虹煡璇嗗簱")
+        st.warning("鈿狅笍 Please upload documents and build knowledge base first")
     else:
         with st.chat_message("user"):
             st.write(query)
         st.session_state.chat_history.append({"role": "user", "content": query})
         
         with st.chat_message("assistant"):
-            with st.spinner("姝ｅ湪鎬濊€?.."):
+            with st.spinner("Thinking..."):
                 if st.session_state.qa_chain is None:
                     st.session_state.qa_chain = build_qa_chain()
                 
@@ -174,12 +177,14 @@ if query := st.chat_input("璇疯緭鍏ユ偍鐨勯棶棰?.."):
 
 st.divider()
 
-st.subheader("馃摉 浣跨敤璇存槑")
+st.subheader("馃摉 Usage Instructions")
 st.markdown("""
-1. **涓婁紶鏂囨。**: 鐐瑰嚮涓婃柟鏂囦欢涓婁紶鍖哄煙锛岄€夋嫨 PDF銆丏OCX 鎴?TXT 鏍煎紡鐨勬枃妗?2. **鏋勫缓鐭ヨ瘑搴?*: 鐐瑰嚮"鏋勫缓鐭ヨ瘑搴?鎸夐挳锛岀郴缁熶細鑷姩瑙ｆ瀽鏂囨。骞跺垱寤哄悜閲忔暟鎹簱
-3. **鎻愰棶**: 鍦ㄤ笅鏂硅緭鍏ユ涓緭鍏ラ棶棰橈紝鐐瑰嚮鍙戦€佸嵆鍙幏寰楀洖绛?4. **瀵硅瘽鍘嗗彶**: 绯荤粺浼氳嚜鍔ㄤ繚瀛樺璇濆巻鍙诧紝鏀寔澶氳疆瀵硅瘽
+1. **Upload Documents**: Click the file upload area above and select PDF, DOCX, or TXT files
+2. **Build Knowledge Base**: Click "Build Knowledge Base" button to process documents
+3. **Ask Questions**: Type your question in the input box below and press Enter
+4. **Chat History**: The system will automatically save conversation history
 
-**娉ㄦ剰**: 浣跨敤鍓嶈纭繚宸插畨瑁?Ollama 骞朵笅杞界浉鍏虫ā鍨嬶細
+**Note**: Before using, ensure Ollama is installed and models are downloaded:
 - `ollama pull deepseek-r1:7b`
 - `ollama pull nomic-embed-text`
 """)

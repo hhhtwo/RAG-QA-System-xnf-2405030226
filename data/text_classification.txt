@@ -1,1 +1,49 @@
-- 新闻分类：自动分类新闻文章
+Text Classification Techniques
+
+Chapter 1: Overview of Text Classification
+
+Text classification is one of the core tasks in natural language processing. Its goal is to automatically assign text to predefined categories. Text classification has wide applications in information retrieval, sentiment analysis, spam filtering, and other fields.
+
+Chapter 2: Text Classification Process
+
+A typical text classification process includes:
+1. Data Collection: Collect annotated training data
+2. Text Preprocessing: Tokenization, stopword removal, stemming
+3. Feature Extraction: Convert text to numerical features
+4. Model Training: Train classifier using machine learning algorithms
+5. Model Evaluation: Evaluate classifier performance
+6. Model Deployment: Apply the model to real scenarios
+
+Chapter 3: Feature Extraction Methods
+
+Common feature extraction methods include:
+1. Bag of Words: Count word frequencies
+2. TF-IDF: Consider word importance
+3. Word2Vec: Word vector representation
+4. BERT Embeddings: Contextual representations based on pre-trained models
+
+Chapter 4: Classification Algorithms
+
+Common text classification algorithms:
+1. Naive Bayes
+2. Support Vector Machines (SVM)
+3. Logistic Regression
+4. Decision Trees and Random Forests
+5. Deep Learning Models (CNN, RNN, Transformer)
+
+Chapter 5: Evaluation Metrics
+
+Evaluation metrics for text classification:
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
+
+Chapter 6: Practical Applications
+
+Typical applications of text classification:
+- Sentiment Analysis: Determine text sentiment
+- Topic Classification: Classify documents into topics
+- Spam Filtering: Identify spam emails
+- News Classification: Automatically classify news articles

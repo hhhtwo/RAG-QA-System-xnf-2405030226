@@ -1,1 +1,56 @@
+BERT Model Explained
+
+Chapter 1: Introduction to BERT
+
+BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained language model proposed by Google in 2018. It is based on the Transformer encoder and adopts bidirectional context understanding.
+
+Chapter 2: BERT Architecture
+
+The core structure of BERT is a multi-layer Transformer encoder. Key features include:
+- Bidirectional Transformer encoder
+- Multi-layer stacking structure
+- Multi-head self-attention mechanism
+
+Chapter 3: BERT Pre-training Tasks
+
+BERT learns general language representations through two pre-training tasks:
+
+1. Masked Language Modeling (MLM):
+   - Randomly mask 15% of the input tokens
+   - The model predicts the masked tokens
+   - This allows the model to learn bidirectional context
+
+2. Next Sentence Prediction (NSP):
+   - Predict whether two sentences are consecutive
+   - Positive samples: truly consecutive sentence pairs
+   - Negative samples: randomly paired sentences
+
+Chapter 4: BERT Variants
+
+BERT has several variant versions:
+- BERT-Base: 12-layer Transformer, 768-dimensional hidden layer, 12 attention heads
+- BERT-Large: 24-layer Transformer, 1024-dimensional hidden layer, 16 attention heads
+- BERT-Small: Smaller model, suitable for resource-constrained environments
+
+Chapter 5: BERT Fine-tuning
+
+BERT uses a two-stage training approach:
+1. Pre-training stage: Learning general representations on large-scale corpus
+2. Fine-tuning stage: Fine-tuning on specific tasks
+
+Fine-tuning methods include:
+- Adding task-specific classification layers
+- Freezing some pre-trained parameters
+- Using smaller learning rates
+
+Chapter 6: Applications of BERT
+
+BERT has achieved breakthroughs in multiple NLP tasks:
+- Question Answering (QA)
+- Sentiment Analysis
+- Named Entity Recognition (NER)
+- Text Classification
+- Semantic Similarity Calculation
+
+Reference paper:
 - Devlin et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.
